@@ -27,6 +27,11 @@ optional arguments:
                         Output filename (defaults to <domain-name>.mp4)
 ```
 
+e.g.
+`spice-record -c qemu:///system win10`
+
+Where win10 is the ID of the virtual machine (name in virt-manager)
+
 ## Requirements
 - Python 3
 - `libvirt-python` (not `libvirt-glib`)
@@ -38,6 +43,11 @@ If `virt-manager` is installed on a modern distro (which has ported all of its
 Python apps to Python 3), then everything should already be installed, aside
 from `ffmpeg`.
 
+## Installation
+run
+
+`python setup.py build && sudo python setup.py install`
+
 ## Notes
 Currently, the spice server only supports a single client connection. When
 another connection is opened, the current one is disconnected. Thus, this
@@ -45,6 +55,9 @@ utility is limited in its usability as it cannot record a user interacting with
 the VM, and only an automatic ongoing process. There is however, an
 experimental feature to enable [multiple concurrent
 connections][MultipleClients] to a single spice server.
+
+* Multiple clients works well.
+* doesn't record the cursor
 
 [spice-record]: https://github.com/JonathonReinhart/spice-record
 [SPICE]: https://www.spice-space.org/
